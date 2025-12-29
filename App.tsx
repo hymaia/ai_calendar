@@ -98,11 +98,6 @@ const App: React.FC = () => {
                   <span className={`text-[12px] font-black tracking-widest ${available ? 'text-slate-900' : 'text-slate-200'}`}>
                     {day.day.toString().padStart(2, '0')}
                   </span>
-                  {available && !quietMode && !day.isUnlocked && (
-                    <div className="flex gap-1">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                    </div>
-                  )}
                 </div>
 
                 {quietMode ? (
