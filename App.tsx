@@ -6,6 +6,10 @@ import SleepingAnimal from './components/SleepingAnimal';
 import { DayData } from './types';
 import { CALENDAR_DAYS, WEEKDAYS, TARGET_YEAR, TARGET_MONTH, isWeekendOrHoliday } from './constants';
 
+// Resolve public assets explicitly so Vite serves them correctly
+const HOME_LOGO = new URL('/logos/HomeExchange_logo.png', import.meta.url).href;
+const NOTION_LOGO = new URL('/logos/Notion-logo.svg.png', import.meta.url).href;
+
 const App: React.FC = () => {
   const [days, setDays] = useState<DayData[]>(CALENDAR_DAYS);
   // Simulation de la date au 16 Janvier 2026
@@ -97,17 +101,17 @@ const App: React.FC = () => {
         <div className="animate-float mb-10">
            <div className="glass p-6 rounded-[3rem] shadow-xl shadow-blue-500/5 flex items-center gap-6">
              <div className="flex items-center">
-                <img 
-                  src="/logos/HomeExchange_logo.png" 
-                  alt="HomeExchange" 
-                  className="h-10 w-auto object-contain"
-                />
+               <img
+                 src={HOME_LOGO}
+                 alt="HomeExchange"
+                 className="h-10 w-auto object-contain"
+               />
              </div>
              <div className="h-12 w-[1.5px] bg-slate-200/50" />
              <div className="flex items-center">
-                <img 
-                  src="/logos/Notion-logo.svg.png" 
-                  alt="Notion" 
+                <img
+                  src={NOTION_LOGO}
+                  alt="Notion"
                   className="w-10 h-10 object-contain"
                 />
              </div>
@@ -202,37 +206,7 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      <footer className="fixed bottom-12 z-50">
-        <div className="glass px-10 py-5 rounded-[2.5rem] shadow-2xl flex items-center gap-12 border border-white/50">
-          <div className="flex items-center gap-5">
-             <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center shadow-lg p-2">
-                <img 
-                  src="/logos/Notion-logo.svg.png" 
-                  alt="Notion" 
-                  className="w-full h-full object-contain"
-                />
-             </div>
-             <div className="flex flex-col">
-                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">HomeExchange</span>
-                <span className="text-base font-bold text-blue-900">After-Calendar</span>
-             </div>
-          </div>
-          
-          <div className="h-10 w-[1px] bg-slate-200" />
-          
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-3 group/top"
-          >
-            <span className="text-[11px] font-black uppercase tracking-widest text-slate-500 group-hover/top:text-blue-600 transition-colors">Remonter</span>
-            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover/top:bg-blue-50 transition-all border border-slate-100">
-              <svg className="w-4 h-4 text-slate-400 group-hover/top:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 15l7-7 7 7" />
-              </svg>
-            </div>
-          </button>
-        </div>
-      </footer>
+      {/* Footer removed as requested */}
     </div>
   );
 };
