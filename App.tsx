@@ -17,7 +17,16 @@ const App: React.FC = () => {
   const [targetYear, setTargetYear] = useState<number>(2026);
   const [targetMonth, setTargetMonth] = useState<number>(0);
 
-  const actualToday = new Date();
+  const getMockToday = (): Date | null => {
+    if (typeof window === 'undefined') return null;
+    const query = new URLSearchParams(window.location.search);
+    const override = query.get('mockToday') || query.get('today');
+    if (!override) return null;
+    const parsed = new Date(override);
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+  };
+
+  const actualToday = getMockToday() ?? new Date();
   const normalizedActualToday = new Date(actualToday.getFullYear(), actualToday.getMonth(), actualToday.getDate());
 
   const handleReveal = (dayNum: number) => {
