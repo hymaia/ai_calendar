@@ -8,13 +8,13 @@ const Snowfall: React.FC = () => {
   const requestRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    const initialParticles: SnowParticle[] = Array.from({ length: 60 }, (_, i) => ({
+    const initialParticles: SnowParticle[] = Array.from({ length: 140 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 4 + 1,
-      speed: Math.random() * 0.15 + 0.05,
-      opacity: Math.random() * 0.4 + 0.2
+      speed: Math.random() * 0.25 + 0.12,
+      opacity: Math.random() * 0.5 + 0.3
     }));
     setParticles(initialParticles);
 
@@ -34,7 +34,7 @@ const Snowfall: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
       {particles.map(p => (
         <div
           key={p.id}
