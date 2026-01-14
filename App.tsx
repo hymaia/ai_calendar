@@ -7,7 +7,7 @@ import { DayData } from './types';
 import { CALENDAR_DAYS, WEEKDAYS, isWeekendOrHoliday } from './constants';
 
 // Resolve public assets explicitly so Vite serves them correctly
-const HOME_LOGO = new URL('/logos/HomeExchange_logo.png', import.meta.url).href;
+const HOME_LOGO = new URL('/logos/homeexchange_logo.jpeg', import.meta.url).href;
 const NOTION_LOGO = new URL('/logos/Notion-logo.svg.png', import.meta.url).href;
 
 const App: React.FC = () => {
